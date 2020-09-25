@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { handleInitialData } from '../actions/shared';
+import SignIn from './SignIn';
 
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
 
-function App() {
-  return (
-    <div>
-      App Component
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <SignIn />
+      </div>
+    );
+  }
+  
 }
 
-export default App;
+export default connect()(App);

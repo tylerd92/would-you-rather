@@ -4,7 +4,7 @@ import {
   ANSWER_QUESTION
 } from '../actions/questions';
 
-export default function questions(state, action) {
+export default function questions(state = null, action) {
   switch(action.type) {
     case RECEIVE_QUESTIONS:
       return {
@@ -24,8 +24,8 @@ export default function questions(state, action) {
         [action.authedUser]: {
           ...action.authedUser,
           answers: {
-            ...answers,
-            [action.questId]: answer
+            ...action.answers,
+            [action.questId]: action.answer
           }
         }
       };
